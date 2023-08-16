@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path'); 
 const fs = require('fs');
-const dbData = require('./Develop/db/db.json');
+const dbData = require('.db/db.json');
 
 const PORT = 3002;
 
