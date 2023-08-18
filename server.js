@@ -3,23 +3,24 @@ const path = require('path');
 const fs = require('fs');
 const dbData = require('./develop/db/db.json');
 
-const PORT = 3002;
+const PORT = 3001;
 
 const app = express();
 
 app.use(express.json()); // To handle JSON in POST requests
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'develop', 'public', 'index.html')));
 
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'notes.html'));
+    res.sendFile(path.join(__dirname, 'develop','public', 'notes.html'));
 });
 
 app.get('/api/notes', (req, res) => {
     res.json(dbData);
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'develop','public')));
+
 
 
 
@@ -31,7 +32,7 @@ app.post('/api/notes', (req, res) => {
     newNote.id = dbData.length + 1;
     dbData.push(newNote);
 
-    // Write the updated data back to the db.json file
+    // write the updated data back to the db.json file
     fs.writeFile('./db/db.json', JSON.stringify(dbData), (err) => {
         if (err) {
             console.error(err);
