@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const dbData = require('./develop/db/db.json');
 
-const PORT = 3001;
+const PORT = 3003;
 
 const app = express();
 
